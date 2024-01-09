@@ -1,24 +1,42 @@
-// State Variables can be declared outside of the onReady
-// Feel free to make this to what you want!
-// Example:
-// let fungusHP = 100;
 
+function onReady() {
+    console.log("Ready to go!")
+}
 
 
 let fungusHP = 100;
 let totalAP = 100;
 
-function onReady() {
-    console.log("Ready to go!")
+//set variables to DOM elements
+let progress = document.getElementById('ap-meter');
+let hpProgress = document.getElementById('hp-meter');
+let hpText = document.getElementById("hp-text");
+let apText = document.getElementById("ap-text");
+
+
+    setInterval(fungusHealing, 1000);
+
+
+
+    //fungus healing int function
+    function fungusHealing(){
+
+       if(fungusHP < 50){
+        fungusHP++;
+        hpText.innerHTML = `${fungusHP} HP`;
+        console.log( `HP is ${fungusHP}`)
+       }else{
+        //do nothing
+       }
+    }
+
+
+    // let fungusElement = document.querySelector('.enemy .freaky-fungus');
     
-    // Make sure you check the index.html file! 
-    // There are lots of buttons and things ready for you to hook into here!
-    
-    // 🧠 Remember
-    // - Handle events that ->
-    // - Updates state which is ->
-    // - Rendered to the DOM
-}
+    // if (totalAP < 11 && fungusHP > 0) {
+    //     fungusElement.classList.remove('walk');
+    //     fungusElement.classList.add('jump');
+    // }
 // arcane scepter attack
 function arcaneScepter(event){
     //prevents AP from going negative. 
@@ -26,11 +44,6 @@ function arcaneScepter(event){
         console.log("Oh no! You don't have enough Attack Points!");
         return;
     } 
-    //set variables to DOM elements
-    let progress = document.getElementById('ap-meter');
-    let hpProgress = document.getElementById('hp-meter');
-    let hpText = document.getElementById("hp-text");
-    let apText = document.getElementById("ap-text");
     
       //progress bar will not go down if there isn't enough ap
     if (progress.value < 12){
@@ -60,12 +73,6 @@ function entangle(event){
         console.log("Oh no! You don't have enough Attack Points!");
         return;
     } 
-
-    //set variables to DOM elements
-    let progress = document.getElementById('ap-meter');
-    let hpProgress = document.getElementById('hp-meter');
-    let hpText = document.getElementById("hp-text");
-    let apText = document.getElementById("ap-text");
     
       //progress bar will not go down if there isn't enough ap
     if (progress.value < 22){
@@ -95,14 +102,7 @@ function dragonBlade(event){
     if (totalAP < 38){
         console.log("Oh no! You don't have enough Attack Points!");
         return;
-    } 
-    
-    //set variables to DOM elements
-    let progress = document.getElementById('ap-meter');
-    let hpProgress = document.getElementById('hp-meter');
-    let hpText = document.getElementById("hp-text");
-    let apText = document.getElementById("ap-text");
-    
+    }  
       //progress bar will not go down if there isn't enough ap
     if (progress.value < 38){
         return;
@@ -132,21 +132,14 @@ function dragonBlade(event){
         console.log("Oh no! You don't have enough Attack Points!");
         return;
     } 
-
-    
-    //set variables to DOM elements
-    let progress = document.getElementById('ap-meter');
-    let hpProgress = document.getElementById('hp-meter');
-    let hpText = document.getElementById("hp-text");
-    let apText = document.getElementById("ap-text");
     
     //progress bar will not go down if there isn't enough ap
-    if (progress.value < 33){
+    if (progress.value < 25){
         return;
     } 
      // updasted DOM progress value based on 
-     progress.value -= 33;
-     hpProgress.value -= 25;
+     progress.value -= 25;
+     hpProgress.value -= 33;
      
      //updated global HP variable.
      fungusHP = fungusHP -33;
